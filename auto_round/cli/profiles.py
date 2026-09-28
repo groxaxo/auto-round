@@ -21,7 +21,6 @@ AMPERE_QUALITY_DEFAULTS = (
     (("--format", "--formats"), ("--format", "auto_gptq")),
     (("--ignore_layers", "--fp_layers"), ("--ignore_layers", "linear_attn,mtp")),
     (("--batch_size", "--train_bs", "--bs"), ("--batch_size", "1")),
-    (("--gradient_accumulate_steps",), ("--gradient_accumulate_steps", "8")),
     (
         ("--low_gpu_mem_usage", "--no-low_gpu_mem_usage"),
         ("--low_gpu_mem_usage",),

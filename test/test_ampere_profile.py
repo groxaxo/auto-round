@@ -19,7 +19,7 @@ def test_ampere_quality_profile_defaults():
     assert args.format == "auto_gptq"
     assert args.ignore_layers == "linear_attn,mtp"
     assert args.batch_size == 1
-    assert args.gradient_accumulate_steps == 8
+    assert args.gradient_accumulate_steps == 1
     assert args.low_gpu_mem_usage is True
     assert args.enable_deterministic_algorithms is True
 

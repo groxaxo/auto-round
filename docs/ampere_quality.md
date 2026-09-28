@@ -12,7 +12,7 @@ deployment path:
 | Group size | 128 | Good scale locality with mature kernels |
 | Symmetry | symmetric | Required by the preferred Marlin GPTQ path |
 | Tuning recipe | AutoRoundBest | 1000 iters, 512 samples, 2048-token calibration |
-| Batch / accumulation | 1 / 8 | Preserves effective tuning batch with low VRAM |
+| Batch / accumulation | 1 / 1 | Keeps the full 1000-iteration/512-sample quality recipe practical on 12 GB Ampere |
 | GPU memory mode | low | Keeps 4B-8B tuning practical on 12-24 GB cards |
 | Reproducibility | deterministic | Makes A/B comparisons repeatable |
 | Export | auto_gptq | Compatible with CUDA GPTQ/Marlin runtimes |

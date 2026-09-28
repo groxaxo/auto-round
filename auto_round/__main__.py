@@ -14,7 +14,16 @@
 
 # Thin shim - all logic lives in auto_round.cli.main.
 # This file exists solely to satisfy setup.cfg console_scripts entry points.
-from auto_round.cli.main import run, run_best, run_eval, run_light, run_mllm, run_opt_rtn, run_rtn  # noqa: F401
+from auto_round.cli.main import (  # noqa: F401
+    run,
+    run_ampere_best,
+    run_best,
+    run_eval,
+    run_light,
+    run_mllm,
+    run_opt_rtn,
+    run_rtn,
+)
 
 if __name__ == "__main__":
     run()

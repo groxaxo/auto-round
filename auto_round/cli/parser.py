@@ -202,9 +202,21 @@ def build_quantize_parser(*, prog: str = "auto_round quantize") -> argparse.Argu
         help=argparse.SUPPRESS,
         action=_LegacyAliasAction,
     )
-    rt.add_argument(
-        "--low_gpu_mem_usage", action="store_true", help="Enable memory-efficient mode by offloading features to CPU."
+    low_gpu_mem_group = rt.add_mutually_exclusive_group()
+    low_gpu_mem_group.add_argument(
+        "--low_gpu_mem_usage",
+        dest="low_gpu_mem_usage",
+        action="store_true",
+        help="Enable memory-efficient mode by offloading features to CPU.",
     )
+    low_gpu_mem_group.add_argument(
+        "--disable_low_gpu_mem_usage",
+        "--no-low_gpu_mem_usage",
+        dest="low_gpu_mem_usage",
+        action="store_false",
+        help="Disable GPU-memory offloading even when a hardware profile enables it.",
+    )
+    rt.set_defaults(low_gpu_mem_usage=False)
     rt.add_argument(
         "--low_cpu_mem_usage",
         action="store_true",
@@ -312,11 +324,20 @@ def build_quantize_parser(*, prog: str = "auto_round quantize") -> argparse.Argu
         help="Ignore scale and zero-point overhead when computing AutoScheme target bits.",
     )
     compat.add_argument("--disable_amp", action="store_true", help="Disable AMP during tuning.")
-    compat.add_argument(
+    deterministic_group = compat.add_mutually_exclusive_group()
+    deterministic_group.add_argument(
         "--enable_deterministic_algorithms",
+        dest="enable_deterministic_algorithms",
         action="store_true",
         default=None,
         help="Enable deterministic algorithms for reproducible runs.",
+    )
+    deterministic_group.add_argument(
+        "--disable_deterministic_algorithms",
+        "--no-enable_deterministic_algorithms",
+        dest="enable_deterministic_algorithms",
+        action="store_false",
+        help="Disable deterministic algorithms even when a hardware profile enables them.",
     )
     compat.add_argument("--model_free", action="store_true", help="Force model-free quantization mode.")
     compat.add_argument("--disable_model_free", action="store_true", help="Disable automatic model-free routing.")

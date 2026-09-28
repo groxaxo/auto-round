@@ -569,6 +569,15 @@ def run_best():
     start("best")
 
 
+def run_ampere_best():
+    """Quality-first Ampere profile: W8A16/G128 + AutoRoundBest + GPTQ/Marlin."""
+    from auto_round.cli.profiles import ampere_quality_argv, validate_ampere_runtime
+
+    argv = ampere_quality_argv(sys.argv[1:])
+    validate_ampere_runtime(argv)
+    start("best", argv=argv)
+
+
 def run_light():
     start("light")
 

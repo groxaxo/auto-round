@@ -153,7 +153,7 @@ auto-round \
 ```
 
 
-We offer another two recipes, `auto-round-best` and `auto-round-light`, designed for optimal accuracy and improved speed, respectively. Details are as follows.
+We also provide `auto-round-best`, `auto-round-light`, and a quality-first NVIDIA Ampere profile, `auto-round-ampere-best`. Details are as follows.
 <details>
   <summary>Other Recipes</summary>
 
@@ -164,6 +164,15 @@ auto-round-best \
     --scheme "W4A16" \
     --low_gpu_mem_usage 
   ```
+
+  ```bash
+# Quality-first NVIDIA Ampere profile: W8A16/G128 + AutoRoundBest + GPTQ/Marlin path
+auto-round-ampere-best \
+    --model Qwen/Qwen3.5-4B \
+    --output_dir ./qwen35-4b-ampere-w8-g128
+  ```
+
+  See [Ampere quality profile](docs/ampere_quality.md) for rationale, overrides, and validation guidance.
 
   ```bash
 # 2-3X speedup, slight accuracy drop at W4 and larger accuracy drop at W2

@@ -19,6 +19,7 @@ AMPERE_QUALITY_DEFAULTS = (
     (("--scheme",), ("--scheme", "W8A16")),
     (("--group_size",), ("--group_size", "128")),
     (("--format", "--formats"), ("--format", "auto_gptq")),
+    (("--ignore_layers", "--fp_layers"), ("--ignore_layers", "linear_attn,mtp")),
     (("--batch_size", "--train_bs", "--bs"), ("--batch_size", "1")),
     (("--gradient_accumulate_steps",), ("--gradient_accumulate_steps", "8")),
     (

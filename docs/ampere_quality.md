@@ -16,6 +16,7 @@ deployment path:
 | GPU memory mode | low | Keeps 4B-8B tuning practical on 12-24 GB cards |
 | Reproducibility | deterministic | Makes A/B comparisons repeatable |
 | Export | auto_gptq | Compatible with CUDA GPTQ/Marlin runtimes |
+| Protected state paths | linear_attn, mtp | Keep hybrid state-sensitive and MTP modules in source precision |
 
 ## Reference run
 
@@ -57,8 +58,10 @@ visible.
   KV quantization are independent error sources and should be validated
   separately.
 - The language-model head remains unquantized unless --quant_lm_head is
-  supplied. Qwen3.5-specific MTP/special-module handling remains owned by
-  AutoRound's model support code rather than duplicated in this profile.
+  supplied.
+- Qwen3.5 linear-attention modules and the entire MTP branch are kept in
+  source precision by default via --ignore_layers linear_attn,mtp. An explicit
+  --ignore_layers/--fp_layers value replaces this profile default.
 
 ## Marlin serving path
 

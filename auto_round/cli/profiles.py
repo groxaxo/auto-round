@@ -23,13 +23,12 @@ AMPERE_QUALITY_DEFAULTS = (
     (("--batch_size", "--train_bs", "--bs"), ("--batch_size", "1")),
     (("--gradient_accumulate_steps",), ("--gradient_accumulate_steps", "8")),
     (
-        ("--low_gpu_mem_usage", "--disable_low_gpu_mem_usage", "--no-low_gpu_mem_usage"),
+        ("--low_gpu_mem_usage", "--no-low_gpu_mem_usage"),
         ("--low_gpu_mem_usage",),
     ),
     (
         (
             "--enable_deterministic_algorithms",
-            "--disable_deterministic_algorithms",
             "--no-enable_deterministic_algorithms",
         ),
         ("--enable_deterministic_algorithms",),

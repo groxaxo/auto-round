@@ -210,7 +210,6 @@ def build_quantize_parser(*, prog: str = "auto_round quantize") -> argparse.Argu
         help="Enable memory-efficient mode by offloading features to CPU.",
     )
     low_gpu_mem_group.add_argument(
-        "--disable_low_gpu_mem_usage",
         "--no-low_gpu_mem_usage",
         dest="low_gpu_mem_usage",
         action="store_false",
@@ -333,7 +332,6 @@ def build_quantize_parser(*, prog: str = "auto_round quantize") -> argparse.Argu
         help="Enable deterministic algorithms for reproducible runs.",
     )
     deterministic_group.add_argument(
-        "--disable_deterministic_algorithms",
         "--no-enable_deterministic_algorithms",
         dest="enable_deterministic_algorithms",
         action="store_false",

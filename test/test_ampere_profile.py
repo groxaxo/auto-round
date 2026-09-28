@@ -39,7 +39,7 @@ def test_ampere_quality_profile_explicit_overrides_win():
             "--gradient_accumulate_steps",
             "2",
             "--no-low_gpu_mem_usage",
-            "--disable_deterministic_algorithms",
+            "--no-enable_deterministic_algorithms",
         ]
     )
 
